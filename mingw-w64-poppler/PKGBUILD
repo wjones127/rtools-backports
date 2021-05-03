@@ -21,11 +21,14 @@ depends=("${MINGW_PACKAGE_PREFIX}-cairo"
          "${MINGW_PACKAGE_PREFIX}-poppler-data"
          "${MINGW_PACKAGE_PREFIX}-zlib")
 options=('strip' 'staticlibs')
-source=("https://poppler.freedesktop.org/${_realname}-${pkgver}.tar.xz")
-sha256sums=('5e2219656c6bbd36154133fef2e12b7d0938464518827098b29a10b1697ea79c')
+source=("https://poppler.freedesktop.org/${_realname}-${pkgver}.tar.xz"
+        "https://github.com/freedesktop/poppler/commit/3ea3ad26.diff")
+sha256sums=('5e2219656c6bbd36154133fef2e12b7d0938464518827098b29a10b1697ea79c'
+            'SKIP')
 
 prepare() {
   cd ${_realname}-${pkgver}
+  patch -Rp1 -i "${srcdir}/3ea3ad26.diff"
 }
 
 build() {
