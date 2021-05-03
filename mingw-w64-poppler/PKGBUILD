@@ -59,8 +59,6 @@ build() {
     -DENABLE_UTILS=ON \
     ../${_realname}-${pkgver}
 
-  CC="${MINGW_PREFIX}/bin/gcc.exe" \
-  PKG_CONFIG_PATH="${MINGW_PREFIX}/lib/pkgconfig" \
   make V=1
 }
 
